@@ -40,10 +40,10 @@ export default function Home() {
   };
 
   const bullets = [
-    "Power flow & short-circuit • protection coordination",
-    "Python/TypeScript automations • data pipelines • PDF/Excel I/O",
-    "Field apps & CAD ops (AutoCAD/AutoLISP) • drawings at scale",
-    "Clean, tested, documented code • reproducible engineering",
+    "Python/TypeScript automations • data pipelines • PDF/Excel processing",
+    "Custom workflow tools • APIs • integrations",
+    "Field data apps & CAD-related automation (AutoCAD/AutoLISP tools)",
+    "Clean, documented, maintainable code • scalable architectures",
   ];
 
   return (
@@ -88,7 +88,7 @@ export default function Home() {
               className="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-pulse"
               aria-hidden
             />
-            Available for consulting • Power Systems & Automation
+            Available for consulting • Workflow automation & custom tools
           </div>
 
           <h1
@@ -98,21 +98,22 @@ export default function Home() {
           >
             I turn{" "}
             <span className="bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-400 bg-clip-text text-transparent">
-              complex power & data workflows
+              messy operations &amp; data-heavy workflows
             </span>{" "}
             into
             <br />
-            elegant, reliable automation.
+            elegant, reliable automation systems.
           </h1>
 
           <p className="mt-5 text-gray-300 text-[clamp(1rem,1.2vw,1.125rem)] leading-relaxed max-w-[62ch]">
-            Hi, I’m <strong>Baran Çevrim</strong> —{" "}
-            <strong>electrical engineering professional & software developer</strong>{" "}
-            <span className="text-white/70">(P.Eng. in progress)</span>. I build tools that
-            help utilities and engineering teams move faster with confidence.
+            Hi, I&apos;m <strong>Baran Çevrim</strong> — a software developer and
+            workflow automation builder. I design tools that streamline
+            operations, eliminate repetitive work, and help teams move faster
+            with clarity and confidence.
           </p>
           <p className="mt-2 text-sm text-gray-400">
-            8+ years across hospitals, utilities & industrial plants • based in GTA.
+            8+ years of experience across industrial, utilities and technical
+            environments • based in GTA.
           </p>
 
           <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-300 max-w-[80ch]">
