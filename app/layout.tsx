@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import Navbar from "@/components/Navbar";
-import PageTransition from "@/components/PageTransition";
+// import PageTransition from "@/components/PageTransition";
 import BackgroundFormulas from "@/components/BackgroundFormulas";
 import NextTopLoader from "nextjs-toploader";
 
@@ -12,7 +12,10 @@ const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://barancevrim.com"),
-  title: { default: "Baran Çevrim | Engineering & Automation", template: "%s · Baran Çevrim" },
+  title: {
+    default: "Baran Çevrim | Engineering & Automation",
+    template: "%s · Baran Çevrim",
+  },
   description:
     "Power systems & data automation. Utilities ve mühendislik ekipleri için hızlı, güvenilir çözümler.",
   keywords: [
@@ -27,7 +30,6 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
-  // viewport yerine theme-color kullanımı (Next 13+ tavsiye)
   themeColor: [
     { media: "(prefers-color-scheme: dark)", color: "#000000" },
     { media: "(prefers-color-scheme: light)", color: "#000000" },
@@ -36,15 +38,19 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://barancevrim.com",
     title: "Baran Çevrim — Engineering & Automation",
-    description: "Turning complex power & data workflows into elegant, reliable automation.",
+    description:
+      "Turning complex power & data workflows into elegant, reliable automation.",
     siteName: "Baran Çevrim",
-    images: [{ url: "/og/og-image.jpg", width: 1200, height: 630, alt: "Baran Çevrim" }],
+    images: [
+      { url: "/og/og-image.jpg", width: 1200, height: 630, alt: "Baran Çevrim" },
+    ],
     locale: "en_CA",
   },
   twitter: {
     card: "summary_large_image",
     title: "Baran Çevrim — Engineering & Automation",
-    description: "Power systems & data automation for utilities and engineering teams.",
+    description:
+      "Power systems & data automation for utilities and engineering teams.",
     images: ["/og/og-image.jpg"],
   },
   icons: {
@@ -98,13 +104,11 @@ function Footer() {
       <div className="container mx-auto max-w-7xl px-4 md:px-8 py-8 text-sm text-neutral-400">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs md:text-sm text-gray-400">
-            © {year} <span className="text-white/80 font-medium">Baran Çevrim</span>. All rights reserved.
+            © {year} <span className="text-white/80 font-medium">Baran Çevrim</span>. All
+            rights reserved.
           </p>
           <div className="flex items-center gap-4 text-xs">
-            {/* örnek sosyal linkler — hazır olunca aç */}
-            {/* <a href="mailto:hello@barancevrim.com" className="hover:text-white transition">Email</a>
-            <a href="https://github.com/barancevrim" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">GitHub</a>
-            <a href="https://linkedin.com/in/barancevrim" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">LinkedIn</a> */}
+            {/* ileride sosyal linkler için hazır */}
           </div>
         </div>
       </div>
@@ -114,7 +118,12 @@ function Footer() {
 
 function SRLiveRegion() {
   return (
-    <div aria-live="polite" aria-atomic="true" className="sr-only" id="route-announcer" />
+    <div
+      aria-live="polite"
+      aria-atomic="true"
+      className="sr-only"
+      id="route-announcer"
+    />
   );
 }
 
@@ -125,7 +134,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <MotionGate />
         <SchemaOrg />
       </head>
-      <body className={`${inter.className} relative min-h-screen bg-[var(--bg)] text-white antialiased`}>
+      <body
+        className={`${inter.className} relative min-h-screen bg-[var(--bg)] text-white antialiased`}
+      >
         {/* route progress */}
         <NextTopLoader color="#f97316" height={3} showSpinner={false} />
 
@@ -144,7 +155,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
 
-        {/* Sticky navbar — sabit yükseklik YOK => dropdown açılınca sayfa iner */}
+        {/* Sticky navbar */}
         <header className="sticky top-0 z-50 border-b border-white/10 backdrop-blur supports-[backdrop-filter]:bg-black/40">
           <div className="container mx-auto max-w-7xl px-4 md:px-8 py-2 min-h-14 flex items-center">
             <Navbar />
@@ -153,7 +164,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* Sayfa içerikleri */}
         <main id="content" role="main" className="relative">
-          <PageTransition>{children}</PageTransition>
+          {children}
         </main>
 
         <Footer />
