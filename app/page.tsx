@@ -109,7 +109,7 @@ export default function Home() {
             Hi, I&apos;m <strong>Baran Çevrim</strong> — a software developer and
             workflow automation builder. I design tools that streamline
             operations, eliminate repetitive work, and help teams move faster
-            with clarity and confidence.
+            with clarity and confidenceoldu.
           </p>
           <p className="mt-2 text-sm text-gray-400">
             8+ years of experience across industrial, utilities and technical
