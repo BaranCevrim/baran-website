@@ -93,14 +93,6 @@ export default function ContactClient() {
           >
             LinkedIn
           </a>
-          <a
-            href="https://github.com/barancevrim"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-md border border-white/15 bg-white/5 px-3 py-1.5 text-sm text-white hover:bg-white/10 transition"
-          >
-            GitHub
-          </a>
         </div>
       </div>
 

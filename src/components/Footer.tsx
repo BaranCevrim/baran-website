@@ -13,15 +13,6 @@ export default function Footer() {
           {/* sağ kısım: sosyal linkler */}
           <div className="flex items-center gap-3 sm:gap-4 text-xs">
             <a
-              href="https://github.com/barancevrim"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-black rounded px-1"
-              aria-label="GitHub profile"
-            >
-              GitHub
-            </a>
-            <a
               href="https://linkedin.com/in/barancevrim"
               target="_blank"
               rel="noopener noreferrer"
