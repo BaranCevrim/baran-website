@@ -21,7 +21,9 @@ export default function Navbar() {
       setReduceMotion(
         window.matchMedia("(prefers-reduced-motion: reduce)").matches
       );
-    } catch {}
+    } catch {
+      // ignore
+    }
   }, []);
 
   // dışarı tık / ESC
@@ -71,27 +73,77 @@ export default function Navbar() {
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/projects", label: "Projects" },
-    { href: "/experience", label: "Experience" },
-    { href: "/blog", label: "Blog" },
     { href: "/contact", label: "Contact" },
   ];
+
+  const isActive = (href: string) =>
+    href === "/"
+      ? pathname === "/"
+      : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <nav
       ref={navRef}
       role="navigation"
       aria-label="Primary"
-      className="w-full bg-black/90 supports-[backdrop-filter]:bg-black/80 backdrop-blur relative z-40"
+      className="w-full relative z-40"
     >
-      {/* üst bar */}
-      <div className="container mx-auto max-w-7xl px-4 md:px-8 h-14 flex items-center justify-between">
+        {/* ÜST BAR */}
+      <div className="container mx-auto max-w-7xl px-3 sm:px-4 md:px-8 h-14 flex items-center justify-between gap-2 sm:gap-4">
+        {/* LOGO / BRAND */}
         <Link
           href="/"
-          className="rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-sm font-semibold text-white/90 shadow-sm hover:bg-white/10 transition"
+          className="inline-flex items-center gap-1.5 sm:gap-2 rounded-xl border border-white/10 bg-white/5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white/90 shadow-sm hover:bg-white/10 active:bg-white/15 transition-colors focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-black"
+          aria-label="Home - Baran Çevrim"
         >
-          Baran Çevrim
+          <span className="inline-flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-lg bg-gradient-to-tr from-orange-500 via-amber-300 to-yellow-400 text-[10px] sm:text-xs font-bold text-black shadow-elev-1 flex-shrink-0">
+            BC
+          </span>
+          <span className="leading-none hidden xs:block">
+            <span className="block">Baran Çevrim</span>
+            <span className="block text-[9px] sm:text-[10px] font-normal text-neutral-300">
+              Workflow Automation & Tools
+            </span>
+          </span>
         </Link>
 
+        {/* DESKTOP NAV */}
+        <div className="hidden md:flex items-center gap-4 lg:gap-6">
+          <ul className="flex items-center gap-2 lg:gap-4 text-sm">
+            {links.map((l) => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  className={`relative inline-flex items-center rounded-lg px-2.5 py-1.5 transition-colors focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-black ${
+                    isActive(l.href)
+                      ? "text-white"
+                      : "text-neutral-200 hover:text-white/90"
+                  }`}
+                  aria-current={isActive(l.href) ? "page" : undefined}
+                >
+                  {l.label}
+                  <span
+                    className={`absolute left-1 right-1 -bottom-0.5 h-[2px] rounded-full bg-orange-500 origin-left ${
+                      isActive(l.href)
+                        ? reduceMotion
+                          ? ""
+                          : "scale-x-100 transition-transform duration-200"
+                        : "scale-x-0"
+                    }`}
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Sağ tarafta küçük status chip */}
+          <div className="hidden lg:inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-3 py-1 text-[11px] text-neutral-300">
+            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
+            <span>Open to collaborations & tooling work</span>
+          </div>
+        </div>
+
+        {/* MOBILE MENU BUTTON */}
         <button
           ref={menuBtnRef}
           type="button"
@@ -102,65 +154,79 @@ export default function Navbar() {
             setOpen(willOpen);
             if (willOpen) setTimeout(() => firstLinkRef.current?.focus(), 10);
           }}
-          className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/85 hover:bg-white/10 transition focus:outline-none focus:ring-2 focus:ring-white/30"
+          className="md:hidden inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs text-white/85 hover:bg-white/10 transition focus:outline-none focus:ring-2 focus:ring-white/30"
         >
-          {open ? "Close" : "Menu"}
+          <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
+          <div className="flex flex-col gap-[5px]">
+            <span
+              className={`h-[2px] w-5 rounded-full bg-white transition-transform ${
+                open ? "translate-y-[3px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`h-[2px] w-5 rounded-full bg-white transition-opacity ${
+                open ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`h-[2px] w-5 rounded-full bg-white transition-transform ${
+                open ? "-translate-y-[3px] -rotate-45" : ""
+              }`}
+            />
+          </div>
         </button>
       </div>
 
-      {/* dropdown: sayfayı aşağı iter */}
+      {/* MOBILE DROPDOWN – SADECE md ALTINDA */}
       <div
         ref={wrapperRef}
         id="nav-drop"
         aria-hidden={!open}
-        className={`overflow-hidden ${
+        className={`md:hidden overflow-hidden border-t border-white/10 bg-neutral-950 text-white shadow-[0_20px_40px_rgba(0,0,0,.35)] ${
           reduceMotion ? "" : "transition-[max-height] duration-300 ease-out"
         }`}
         style={{ maxHeight: "0px" }}
       >
         <div ref={contentRef}>
-          <div className="border-t border-white/10 bg-neutral-950 text-white shadow-[0_20px_40px_rgba(0,0,0,.35)]">
-            {/* başlık satırı */}
-            <div className="container mx-auto max-w-7xl px-4 md:px-8 py-3 flex items-center justify-between">
-              <div className="text-xs text-neutral-300">Navigate</div>
-              <div className="inline-flex items-center gap-2 rounded-md border border-white/10 bg-neutral-900 px-2 py-1 text-[11px] text-neutral-300">
-                <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                Available for consulting
-              </div>
+          {/* üst satır */}
+          <div className="container mx-auto max-w-7xl px-4 md:px-8 py-3 flex items-center justify-between">
+            <div className="text-xs text-neutral-300">Navigate</div>
+            <div className="inline-flex items-center gap-2 rounded-md border border-white/10 bg-neutral-900 px-2 py-1 text-[11px] text-neutral-300">
+              <span className="h-2 w-2 rounded-full bg-emerald-400" />
+              Open to collaborations
             </div>
+          </div>
 
-            {/* linkler */}
-            <div className="container mx-auto max-w-7xl px-4 md:px-8 py-2 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-1">
-              {links.map((l, i) => {
-                const active = pathname === l.href;
-                return (
-                  <Link
-                    key={l.href}
-                    href={l.href}
-                    ref={i === 0 ? firstLinkRef : undefined}
-                    onClick={() => setOpen(false)}
-                    className={`relative block rounded-lg px-3 py-2 text-sm transition focus:outline-none
-                      ${
-                        active
-                          ? "text-white"
-                          : "text-neutral-200 hover:bg-neutral-900/80 focus:bg-neutral-900/80"
-                      }`}
-                  >
-                    {l.label}
-                    {/* aktif alt çizgi */}
-                    <span
-                      className={`absolute left-2 right-2 bottom-1 h-[2px] rounded-full bg-orange-500 origin-left ${
-                        active
-                          ? reduceMotion
-                            ? ""
-                            : "scale-x-100 transition-transform duration-200"
-                          : "scale-x-0"
-                      }`}
-                    />
-                  </Link>
-                );
-              })}
-            </div>
+          {/* linkler */}
+          <div className="container mx-auto max-w-7xl px-4 md:px-8 pb-3 grid grid-cols-2 gap-1.5 sm:gap-1">
+            {links.map((l, i) => {
+              const active = isActive(l.href);
+              return (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  ref={i === 0 ? firstLinkRef : undefined}
+                  onClick={() => setOpen(false)}
+                  className={`relative block rounded-lg px-3 py-2 text-sm transition focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-neutral-950 ${
+                    active
+                      ? "text-white bg-neutral-900/80"
+                      : "text-neutral-200 hover:bg-neutral-900/80 focus:bg-neutral-900/80"
+                  }`}
+                  aria-current={active ? "page" : undefined}
+                >
+                  {l.label}
+                  <span
+                    className={`absolute left-2 right-2 bottom-1 h-[2px] rounded-full bg-orange-500 origin-left ${
+                      active
+                        ? reduceMotion
+                          ? ""
+                          : "scale-x-100 transition-transform duration-200"
+                        : "scale-x-0"
+                    }`}
+                  />
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>

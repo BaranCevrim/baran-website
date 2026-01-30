@@ -1,5 +1,5 @@
 'use client';
-import { useMemo } from 'react';
+import { useMemo, memo } from 'react';
 
 const formulas = [
   'P = VI', 'S = √3 V_L I_L', 'Q = VI sinφ', 'Z = R + jX',
@@ -7,7 +7,7 @@ const formulas = [
   'ΔV/V ≈ (Rcosφ+Xsinφ)', '∠V - ∠I = φ', 'X_d′ , X_q',
 ];
 
-export default function BackgroundFormulas() {
+const BackgroundFormulas = memo(function BackgroundFormulas() {
   const items = useMemo(() => {
     return Array.from({ length: 40 }).map((_, i) => {
       const f = formulas[i % formulas.length];
@@ -40,4 +40,6 @@ export default function BackgroundFormulas() {
       ))}
     </svg>
   );
-}
+});
+
+export default BackgroundFormulas;

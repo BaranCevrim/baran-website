@@ -4,29 +4,43 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import Navbar from "@/components/Navbar";
+// PageTransition şimdilik devre dışı:
 // import PageTransition from "@/components/PageTransition";
 import BackgroundFormulas from "@/components/BackgroundFormulas";
 import NextTopLoader from "nextjs-toploader";
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
+const inter = Inter({ 
+  subsets: ["latin"], 
+  display: "swap",
+  preload: true,
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://barancevrim.com"),
   title: {
-    default: "Baran Çevrim | Engineering & Automation",
+    default: "Baran Çevrim | Workflow Automation & Tools",
     template: "%s · Baran Çevrim",
   },
   description:
-    "Power systems & data automation. Utilities ve mühendislik ekipleri için hızlı, güvenilir çözümler.",
+    "Small business automation specialist. Building error-free workflow systems, custom automation apps, and tools that boost company productivity and eliminate operational errors.",
   keywords: [
-    "power systems",
-    "short-circuit",
-    "protection coordination",
-    "automation",
-    "AutoCAD",
-    "Python",
-    "TypeScript",
-    "engineering workflows",
+    "small business automation",
+    "error-free workflows",
+    "workflow automation",
+    "company productivity",
+    "automation apps",
+    "zero-error systems",
+    "internal tools",
+    "workflow acceleration",
+    "Python automation",
+    "TypeScript automation",
+    "data pipelines",
+    "PDF automation",
+    "Excel automation",
+    "BOM management",
+    "barcode filtering",
+    "site inspection apps",
   ],
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
@@ -37,9 +51,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://barancevrim.com",
-    title: "Baran Çevrim — Engineering & Automation",
+    title: "Baran Çevrim — Workflow Automation & Tools",
     description:
-      "Turning complex power & data workflows into elegant, reliable automation.",
+      "Turning messy operations and data-heavy workflows into elegant, reliable automation systems.",
     siteName: "Baran Çevrim",
     images: [
       { url: "/og/og-image.jpg", width: 1200, height: 630, alt: "Baran Çevrim" },
@@ -48,9 +62,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Baran Çevrim — Engineering & Automation",
+    title: "Baran Çevrim — Workflow Automation & Tools",
     description:
-      "Power systems & data automation for utilities and engineering teams.",
+      "Workflow automation, internal tools and light SaaS-style apps for technical teams and solo builders.",
     images: ["/og/og-image.jpg"],
   },
   icons: {
@@ -86,7 +100,7 @@ const SchemaOrg = () => (
         "@type": "Person",
         name: "Baran Çevrim",
         url: "https://barancevrim.com",
-        jobTitle: "Engineering & Automation",
+        jobTitle: "Workflow Automation & Tools",
         sameAs: [
           "https://www.linkedin.com/in/barancevrim",
           "https://github.com/barancevrim",
@@ -97,24 +111,8 @@ const SchemaOrg = () => (
   />
 );
 
-function Footer() {
-  const year = new Date().getFullYear();
-  return (
-    <footer className="mt-24 border-t border-white/10 bg-black/40 backdrop-blur-sm">
-      <div className="container mx-auto max-w-7xl px-4 md:px-8 py-8 text-sm text-neutral-400">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs md:text-sm text-gray-400">
-            © {year} <span className="text-white/80 font-medium">Baran Çevrim</span>. All
-            rights reserved.
-          </p>
-          <div className="flex items-center gap-4 text-xs">
-            {/* ileride sosyal linkler için hazır */}
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-}
+import Footer from "@/components/Footer";
+import Analytics from "@/components/Analytics";
 
 function SRLiveRegion() {
   return (
@@ -131,6 +129,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <MotionGate />
         <SchemaOrg />
       </head>
@@ -144,6 +147,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-grid" />
           <div className="absolute inset-0 bg-noise" />
+          {/* hero tarafını hafifçe parlatan glow */}
+          <div className="bg-glow" />
           <BackgroundFormulas />
         </div>
 
@@ -165,10 +170,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Sayfa içerikleri */}
         <main id="content" role="main" className="relative">
           {children}
+          {/* Eğer tekrar istersen:
+             <PageTransition>{children}</PageTransition>
+          */}
         </main>
 
         <Footer />
         <SRLiveRegion />
+        <Analytics />
       </body>
     </html>
   );

@@ -1,76 +1,93 @@
 // app/projects/page.tsx
+import type { Metadata } from "next";
 
-export const metadata = { title: "Projects" };
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "Automation tools and projects by Baran Çevrim: barcode filtering, BOM management, site inspection apps, and workflow automation solutions for small businesses.",
+  openGraph: {
+    title: "Projects · Baran Çevrim",
+    description: "Automation tools and projects by Baran Çevrim: barcode filtering, BOM management, site inspection apps, and workflow automation solutions for small businesses.",
+  },
+};
 // Prod’da sürprizleri kesmek için istersen aç:
 // export const dynamic = "force-static";
 
 const projects = [
   {
-    title: "BOM-Pro Automation Tool",
+    title: "Barcode Filter Tool",
     date: "2024 – Present",
     description:
-      "A Python-based BOM (Bill of Materials) manager with Excel integration, barcode scanning, and part-number tracking system. It automates QC workflows, updates design databases, and generates filtered reports.",
-    tags: ["Python", "Tkinter", "Pandas", "Excel Automation"],
+      "An automation tool that searches and filters barcodes across two different embedded Excel datasets, each containing over 100,000 rows. The application eliminates manual Excel filtering, processes barcodes individually or in bulk, and automatically generates formatted Excel output with duplicate detection. Designed to replace time-consuming, error-prone manual processes with a single, controlled workflow.",
+    tags: ["Python", "Excel Automation", "Data Processing", "Error-Free Systems"],
+    video: "/videos/part1.mp4",
   },
   {
-    title: "HONI Make Ready Automation",
+    title: "BOM Manager – Bill of Materials System",
     date: "2024 – Present",
     description:
-      "Developed a pole replacement program based on Hydro One framing standards. The system dynamically reads JSON data and visualizes pole profiles in a web interface using Streamlit.",
-    tags: ["Python", "Streamlit", "AutoCAD Integration", "Hydro One Standards"],
+      "A Bill of Materials management tool that converts raw engineering data into structured JSON format, ensuring consistency with engineering standards. Features validation logic that identifies out-of-range or incorrectly formatted values before report generation. Exports clean, formatted Excel files, bridging complex nested data with readable documentation for other departments.",
+    tags: ["Python", "JSON", "Excel Export", "Validation Logic"],
+    video: "/videos/part2.mp4",
   },
   {
-    title: "Site Inspection Android App",
+    title: "Site Inspection Mobile App",
     date: "2025",
     description:
-      "Flutter-based mobile app that enables inspectors to fill out multi-step forms, upload photos, and generate structured PDF reports. Designed for offline use in the field.",
-    tags: ["Flutter", "Dart", "Android Studio", "PDF Generator"],
-  },
-  {
-    title: "AutoCAD Batch Tool",
-    date: "2024",
-    description:
-      "AutoLISP-based AutoCAD automation tool for opening viewports, zooming to object coordinates, and exporting barcode-tagged drawings. Speeds up QA processes by 60%.",
-    tags: ["AutoLISP", "AutoCAD", "Automation"],
-  },
-  {
-    title: "Tailwind Next.js Blog System",
-    date: "2025",
-    description:
-      "A markdown-powered portfolio & blog website built with Tailwind CSS, Next.js, and Contentlayer. Fully responsive and dynamically driven.",
-    tags: ["Next.js", "Tailwind CSS", "Contentlayer", "Vercel"],
+      "A tablet-based field inspection application that eliminates manual steps between field work and final documentation. Features dynamic form generation based on order types, configurable input fields, and five predefined photo categories for consistency. Automatically generates structured PDF reports combining all inspection data and photos into a single, professional document ready for review or archiving.",
+    tags: ["Flutter", "Dart", "Mobile", "PDF Generation", "Field Tools"],
+    video: "/videos/part3.mp4",
   },
 ];
 
 export default function ProjectsPage() {
   return (
-    <section className="section py-16">
-      <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-center">
+    <section className="section py-12 sm:py-16">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-center">
         Selected Projects
       </h1>
 
-      <div className="mt-12 grid gap-6 sm:gap-8 md:grid-cols-2">
+      <p className="mt-4 text-center text-neutral-300 max-w-2xl mx-auto text-sm sm:text-base px-4">
+        Automation tools and custom apps I&apos;ve built to eliminate errors, accelerate workflows, 
+        and boost productivity for small businesses. Each project focuses on zero-defect processes and reliable, maintainable solutions.
+      </p>
+
+      <div className="mt-8 sm:mt-12 grid gap-4 sm:gap-6 md:gap-8 md:grid-cols-3">
         {projects.map((p, i) => (
-          <article key={i} className="card card-hover p-6 h-full">
-            <header className="flex items-start justify-between gap-4">
-              <h2 className="text-xl md:text-2xl font-semibold text-orange-300">
-                {p.title}
-              </h2>
-              <span className="text-xs md:text-sm text-neutral-400 whitespace-nowrap">
-                {p.date}
-              </span>
-            </header>
-
-            <p className="mt-3 text-neutral-200 leading-relaxed">
-              {p.description}
-            </p>
-
-            <div className="mt-4 flex flex-wrap items-center gap-2">
-              {p.tags.map((t, idx) => (
-                <span key={idx} className="chip">
-                  {t}
+          <article key={i} className="card card-hover p-0 overflow-hidden h-full flex flex-col">
+            {p.video && (
+              <div className="relative w-full aspect-video bg-black/60">
+                <video
+                  controls
+                  className="w-full h-full object-contain"
+                  preload="metadata"
+                  aria-label={`${p.title} demo video`}
+                >
+                  <source src={p.video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            )}
+            <div className="p-5 sm:p-6 flex-1 flex flex-col">
+              <header className="flex flex-col sm:flex-row items-start sm:items-start sm:justify-between gap-2 sm:gap-4 mb-3">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-orange-300">
+                  {p.title}
+                </h2>
+                <span className="text-xs sm:text-sm text-neutral-400 whitespace-nowrap">
+                  {p.date}
                 </span>
-              ))}
+              </header>
+
+              <p className="text-neutral-200 leading-relaxed flex-1">
+                {p.description}
+              </p>
+
+              <div className="mt-4 flex flex-wrap items-center gap-2">
+                {p.tags.map((t, idx) => (
+                  <span key={idx} className="chip">
+                    {t}
+                  </span>
+                ))}
+              </div>
             </div>
           </article>
         ))}
