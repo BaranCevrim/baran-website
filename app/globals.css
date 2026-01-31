@@ -29,12 +29,13 @@
   --bg-end:   0 0 0;
 }
 
-@media (prefers-color-scheme: light) {
+/* Light mode disabled - always use dark mode */
+/* @media (prefers-color-scheme: light) {
   :root {
     color-scheme: light;
     --bg: #ffffff;
-    --fg: 17 24 39;              /* gray-900 */
-    --muted: 71 85 105;          /* slate-600 */
+    --fg: 17 24 39;
+    --muted: 71 85 105;
     --card: rgba(0,0,0,0.03);
     --card-2: rgba(0,0,0,0.045);
     --border: rgba(0,0,0,0.08);
@@ -44,7 +45,7 @@
     --elev-2: 0 10px 40px rgba(0,0,0,.16);
     --ring: 0 0 0 1px rgba(0,0,0,.06);
   }
-}
+} */
 
 /* High contrast tercihi */
 @media (prefers-contrast: more) {
