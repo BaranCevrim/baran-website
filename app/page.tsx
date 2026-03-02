@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   const bullets = [
-    "Small business automation • error-free workflow systems • zero-defect processes",
-    "Custom automation apps • internal productivity boosters • company-wide efficiency",
+    "Engineering & small business automation • error-free workflow systems • zero-defect processes",
+    "Custom engineering automation apps • internal productivity boosters • company-wide efficiency",
     "Python/TypeScript automations • data pipelines • PDF/Excel processing",
     "Workflow acceleration • scalable systems • maintainable, documented code",
   ];
@@ -38,13 +39,13 @@ export default function Home() {
         />
       </div>
 
-      {/* ------- HERO ------- */}
+      {/* ------- HERO — photo floats left, text flows right and below ------- */}
       <section
         className="relative mx-auto max-w-[70rem] px-4 sm:px-6 lg:px-12 xl:px-16 pt-8 sm:pt-10 pb-20 sm:pb-24 lg:pt-20
                    min-h-[85vh] sm:min-h-[88vh] flex flex-col justify-start"
         aria-labelledby="hero-heading"
       >
-        <div className="pb-10">
+        <div className="pb-10 overflow-hidden">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] text-gray-300 shadow-sm backdrop-blur">
             <span
               className="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-pulse"
@@ -53,22 +54,36 @@ export default function Home() {
             Available for small business automation projects • Error-free workflow systems
           </div>
 
-          <h1
-            id="hero-heading"
-            className="mt-4 sm:mt-6 font-extrabold tracking-tight
-                       text-[clamp(2rem,5vw,4.2rem)] sm:text-[clamp(2.4rem,5vw,4.2rem)] leading-[1.05] max-w-[24ch]"
-          >
-            I build{" "}
-            <span className="bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-400 bg-clip-text text-transparent">
-              small automation apps
-            </span>{" "}
-            that eliminate errors and accelerate business workflows.
-          </h1>
+          {/* Photo + headline: grid so photo and headline share same top/bottom (same height) */}
+          <div className="mt-4 sm:mt-6 grid grid-cols-1 lg:grid-cols-[auto_1fr] lg:items-stretch lg:gap-8">
+            <div className="relative w-44 h-44 sm:w-52 sm:h-52 mx-auto lg:mx-0 lg:w-auto lg:h-full lg:aspect-square rounded-xl overflow-hidden border border-white/15 bg-white/5 shadow-lg ring-1 ring-white/10 flex-shrink-0">
+              <Image
+                src="/profil foto/Image.jpeg"
+                alt="Baran Çevrim - Automation & Electrical Design"
+                fill
+                className="object-cover object-top"
+                priority
+                sizes="(max-width: 1024px) 208px, 288px"
+              />
+            </div>
+            <div className="min-h-0 flex flex-col justify-center mt-4 lg:mt-0">
+              <h1
+                id="hero-heading"
+                className="font-extrabold tracking-tight text-[clamp(1.35rem,3.6vw,2.65rem)] sm:text-[clamp(1.5rem,3.8vw,2.8rem)] leading-[1.08] max-w-[26ch]"
+              >
+                I build{" "}
+                <span className="bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-400 bg-clip-text text-transparent">
+                  small engineering automation apps
+                </span>{" "}
+                that eliminate errors and accelerate business workflows.
+              </h1>
+            </div>
+          </div>
 
           <p className="mt-4 sm:mt-6 text-gray-300 text-[clamp(0.95rem,1.2vw,1.125rem)] leading-relaxed max-w-[62ch]">
             Hi, I&apos;m <strong>Baran Çevrim</strong> — I specialize in creating 
-            <strong> error-free automation systems</strong> for small businesses. 
-            I build custom apps and tools that streamline operations, eliminate repetitive work, 
+            <strong> error-free engineering automation systems</strong> for small businesses. 
+            I build custom <strong>engineering</strong> apps and tools that streamline operations, eliminate repetitive work, 
             and boost company productivity — all while ensuring zero-error workflows your team can trust.
           </p>
 
