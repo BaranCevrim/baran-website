@@ -88,7 +88,7 @@ export default function Home() {
           </p>
 
           <p className="mt-2 text-sm text-gray-400">
-            Electrical & Electronics Engineering graduate • 8+ years of experience across industrial and technical environments • 
+            Electrical & Electronics Engineering graduate • 9+ years of experience across industrial and technical environments • 
             P.Eng. license application in progress (2025) • based in the Greater Toronto Area.
           </p>
 

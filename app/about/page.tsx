@@ -22,7 +22,7 @@ export default function AboutPage() {
           I&apos;m <span className="font-semibold text-white">Baran Çevrim</span> — a software developer specializing in 
           <strong className="text-white"> small business automation</strong>. I build custom apps and tools that eliminate errors, 
           accelerate workflows, and boost company productivity. With an Electrical & Electronics Engineering background 
-          and 8+ years of experience in technical environments, I create systems that help businesses work faster with zero-defect processes.
+          and 9+ years of experience in technical environments, I create systems that help businesses work faster with zero-defect processes.
         </p>
 
         <p className="mt-4 text-neutral-300 leading-relaxed">
@@ -102,7 +102,7 @@ export default function AboutPage() {
             </li>
             <li>
               <strong className="text-white">Engineering Foundation:</strong> 
-              8+ years of experience solving complex problems in technical and industrial settings —
+              9+ years of experience solving complex problems in technical and industrial settings —
               now leveraged to design clearer, more reliable software workflows.
             </li>
             <li>
