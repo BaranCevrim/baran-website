@@ -1,0 +1,34 @@
+This application is part of a broader approach I use to streamline engineering workflows by combining engineering logic with modern technology.
+
+What you’re seeing here is a tablet-based site inspection application, designed to eliminate manual steps between field work and final documentation.
+
+We start by entering an address — for demonstration purposes, we can use any location.
+From there, parameters such as directions and order types are selected.
+All of these elements are fully configurable, allowing the workflow to adapt to different project requirements.
+
+In the next step, we select an order type.
+Based on that selection, the system dynamically generates a structured inspection form.
+
+This form supports multiple input types — including checkboxes, text fields, and configurable options — making it easy to capture exactly what the inspection requires without unnecessary complexity.
+
+The goal at this stage is accuracy and consistency, ensuring the right data is collected in the field in a structured way.
+
+The next step in the workflow is photo documentation.
+
+The system includes five predefined photo categories, which helps maintain consistency across inspections — for example, front, right-side, and left-side views of the site.
+
+For demonstration purposes, I’m uploading sample images from my computer.
+In a real field scenario, these photos would be captured directly on site using a tablet or mobile device.
+
+Once the inspection data and photos are completed, we submit the inspection.
+After the final commit, the system automatically generates a structured PDF report.
+
+This report combines all inspection data with the related photos into a single, professional document — ready for review, submission, or archiving.
+
+The key idea behind this workflow is efficiency.
+By automating reporting, this approach removes manual work, reduces errors, and significantly shortens the time between site inspection and deliverable-ready documentation.
+
+This structure is not limited to a single use case.
+It can be adapted for different engineering inspections, control processes, or field workflows.
+
+It’s a practical example of how engineering tasks can be accelerated by designing workflows that combine engineering standards with flexible, technology-driven tools.

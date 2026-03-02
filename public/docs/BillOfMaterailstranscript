@@ -1,0 +1,9 @@
+In this second part, I will demonstrate a different automation tool I developed to manage complex Bill of Materials (BOM) data. For this project, I worked with standard data formats and converted them into a structured JSON format to streamline the engineering selection process.
+
+The core of this application is its ability to take raw engineering data and transform it into a highly organized JSON structure. As you can see on the screen, the user can select specific standards or components from a predefined list. This ensures that the data remains consistent and follows the required engineering standards.
+
+Once the selection is made, the program processes these JSON objects and allows the user to export them into a clean, formatted Excel file. This bridge between JSON and Excel is crucial because it takes complex, nested data and makes it readable for other departments or for final documentation.
+
+A key feature here is the validation logic. The program doesn't just convert data; it ensures that the inputs match the specific criteria of the selected standard. If a value is out of range or incorrectly formatted, the system identifies it before the final report is generated.
+
+This tool significantly reduces the time spent on manual data entry and formatting. By using a JSON-based backbone, we ensure that the data is not only easy to manipulate programmatically but also ready for integration with other software or databases in the future.

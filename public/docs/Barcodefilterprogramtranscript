@@ -1,0 +1,13 @@
+In this first example, I’m going to demonstrate a barcode filtering tool I developed for engineering workflows. This application is designed to automatically search and filter barcodes across two different embedded Excel datasets.
+
+These Excel files are integrated directly into the program, each containing over 100,000 rows. Normally, opening such large Excel files and manually filtering for barcodes is time-consuming and prone to human error.
+
+Here, I’ll enter a few barcode inputs; some will be valid, and I’ll intentionally enter at least one incorrect one. Since the Excel files are embedded, the filtering happens entirely within the application. There is no need to manually open Excel or copy-paste data between files.
+
+I can enter barcodes individually or use a bulk input option if needed. The entry method is flexible and easily customizable. Once the barcodes are entered, I click the 'Generate Excel' button. At this point, the process begins, and the application scans through both datasets.
+
+When the process is complete, an Excel file is automatically generated. A new Excel file is created directly on the desktop. The output file follows a predefined format I specifically coded for this workflow. Duplicates or copied results are highlighted, making them easy to distinguish at a glance.
+
+The first sheet contains the filtered data from the first dataset, showing only the fields relevant for engineering review. The second sheet provides the filtered results from the second dataset using the same barcode list.
+
+In summary, this tool replaces repetitive manual Excel filtering with a single, controlled workflow. It allows large datasets to be searched consistently, quickly, and with significantly fewer manual errors."
